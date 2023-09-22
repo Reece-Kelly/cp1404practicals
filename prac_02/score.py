@@ -6,7 +6,7 @@ import random
 
 
 def main():
-    """Get user score and print result and get random score and print result"""
+    """Get user score and print result and get random score and print result."""
     user_score = float(input("Enter score: "))
     user_result = determine_result(user_score)
     print(user_result)
@@ -16,7 +16,7 @@ def main():
 
 
 def determine_result(score):
-    """Determine result based off score"""
+    """Determine result based off score."""
     if score < 0 or score > 100:
         result = "Invalid score"
     elif score < 50:

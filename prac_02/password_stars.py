@@ -2,7 +2,7 @@ MINIMUM_LENGTH = 5
 
 
 def main():
-    """Get valid password and print asterisks * password length"""
+    """Get valid password and print asterisks * password length."""
     password = get_password()
     print_asterisks(password)
 
