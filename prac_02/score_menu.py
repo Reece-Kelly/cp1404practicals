@@ -5,6 +5,7 @@ MENU = """(G)et a valid score
 
 
 def main():
+    """Get a score and determine and print a result based off the score and print stars * score"""
     score = get_valid_score()
     print(MENU)
     choice = input(">>> ").upper()
@@ -24,10 +25,12 @@ def main():
 
 
 def print_stars(score):
+    """Print score * stars"""
     print("*" * score)
 
 
 def get_valid_score():
+    """Get a score between 0 and 100 inclusive"""
     score = int(input("Score: "))
     while score < 0 or score > 100:
         print("Invalid score")
@@ -36,6 +39,7 @@ def get_valid_score():
 
 
 def determine_result(score):
+    """Determine result based off score"""
     if score < 0 or score > 100:
         result = "Invalid score"
     elif score < 50:
