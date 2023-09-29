@@ -26,4 +26,3 @@ print("Finished.")
 
 # Yes, you could add a while loop that checks if the entered denominator is 0 and displays an error message if it is and
 # makes the user enter a valid number
-
