@@ -24,7 +24,7 @@ print(f"Result: {result}")
 in_file = open("numbers.txt", "r")
 total = 0
 for line in in_file:
-    number = int(line.strip())
+    number = int(line)
     total += number
 in_file.close()
 print(f"Total: {total}")
