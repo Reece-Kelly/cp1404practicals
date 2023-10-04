@@ -14,8 +14,8 @@ def main():
 
 def get_data():
     """Read data from file formatted like: subject,lecturer,number of students."""
-    input_file = open(FILENAME)
     subjects = []
+    input_file = open(FILENAME)
     for line in input_file:
         print(line)  # See what a line looks like
         print(repr(line))  # See what a line really looks like
@@ -32,7 +32,7 @@ def get_data():
 
 def display_subject_details(subjects):
     for subject in subjects:
-        print(f"{subject[0]} is taught by {subject[1]} and has {subject[2]} students")
+        print(f"{subject[0]} is taught by {subject[1]:12} and has {subject[2]:3} students")
 
 
 main()
