@@ -2,7 +2,7 @@ NUMBER_OF_NUMBERS = 5
 
 numbers = []
 for i in range(NUMBER_OF_NUMBERS):
-    number = int(input(f"Enter number: "))
+    number = int(input("Enter number: "))
     numbers.append(number)
 print(f"The first number is {numbers[0]}")
 print(f"The last number is {numbers[-1]}")
