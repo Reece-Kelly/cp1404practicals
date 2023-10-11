@@ -11,9 +11,9 @@ def main():
     words = string.split(" ")
     words.sort()
     word_to_count = {word: (words.count(word)) for word in words}
-    max_length = len(max(words))
+    longest_word_length = max(len(word) for word in words)
     for word, count in word_to_count.items():
-        print(f"{word:{max_length}} : {count}")
+        print(f"{word:{longest_word_length}} : {count}")
 
 
 main()
