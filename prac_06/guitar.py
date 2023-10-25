@@ -3,6 +3,8 @@ Estimate time to complete: 25 minutes
 Start time: 11:25
 Finish time:
 """
+VINTAGE_THRESHOLD = 50
+CURRENT_YEAR = 2023
 
 
 class Guitar:
@@ -15,8 +17,8 @@ class Guitar:
         return f"{self.name} ({self.year}) : ${self.cost}"
 
     def get_age(self):
-        age = 2023 - self.year
+        age = CURRENT_YEAR - self.year
         return age
 
     def is_vintage(self):
-        return self.get_age() >= 50
+        return self.get_age() >= VINTAGE_THRESHOLD
