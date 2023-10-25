@@ -1,5 +1,5 @@
 """
-Estimate time to complete: 25 minutes
+Estimate time to complete: 40 minutes
 Start time: 11:25
 Finish time:
 """
