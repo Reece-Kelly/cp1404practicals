@@ -1,3 +1,10 @@
+"""
+Estimate to complete: 20 minutes
+Start time: 10:55
+Finish time:
+"""
+
+
 class ProgrammingLanguage:
     def __init__(self, name, typing, reflection, year):
         self.name = name
