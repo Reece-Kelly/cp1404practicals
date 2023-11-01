@@ -25,7 +25,10 @@ def main():
         guitars.append(guitar)
         print(f"{guitar} added.\n")
         name = input("Name: ")
-
+    # out_file = ("guitars.csv", "w")
+    # for guitar in guitars:
+    #     print(guitar)
+    # out_file.close()
 
 
 main()
