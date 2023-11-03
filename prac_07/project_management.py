@@ -16,11 +16,12 @@ MENU = ("- (L)oad projects\n"
 def main():
     print(MENU)
     choice = input(">>> ").upper()
+    projects = []
     while choice != "Q":
         if choice == "L":
             projects = load_projects()
         elif choice == "S":
-            print("S")
+            save_projects(projects)
         elif choice == "D":
             print("D")
         elif choice == "F":
@@ -31,12 +32,13 @@ def main():
             print("U")
         else:
             print("Invalid choice.")
+        print(MENU)
         choice = input(">>> ").upper()
 
 
 def load_projects():
     filename = input("Filename: ")
-    in_file = open(f"{filename}", "r")
+    in_file = open(filename, "r")
     projects = []
     in_file.readline()
     for line in in_file:
@@ -45,7 +47,18 @@ def load_projects():
                           project_details[4])
         projects.append(project)
     in_file.close()
+    print(f"{len(projects)} projects loaded.")
     return projects
+
+
+def save_projects(projects):
+    filename = input("Filename: ")
+    out_file = open(filename, "w")
+    out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage\n")
+    for project in projects:
+        out_file.write(
+            f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+    out_file.close()
 
 
 main()
