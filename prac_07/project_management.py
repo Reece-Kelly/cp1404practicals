@@ -23,7 +23,7 @@ def main():
         elif choice == "S":
             save_projects(projects)
         elif choice == "D":
-            print("D")
+            display_projects(projects)
         elif choice == "F":
             print("F")
         elif choice == "A":
@@ -43,8 +43,8 @@ def load_projects():
     in_file.readline()
     for line in in_file:
         project_details = line.strip().split("\t")
-        project = Project(project_details[0], project_details[1], project_details[2], project_details[3],
-                          project_details[4])
+        project = Project(project_details[0], project_details[1], int(project_details[2]), float(project_details[3]),
+                          int(project_details[4]))
         projects.append(project)
     in_file.close()
     print(f"{len(projects)} projects loaded.")
@@ -59,6 +59,17 @@ def save_projects(projects):
         out_file.write(
             f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
     out_file.close()
+
+
+def display_projects(projects):
+    print("Incomplete projects:")
+    for project in projects:
+        if project.completion_percentage != 100:
+            print(f"\t{project}")
+    print("Completed projects:")
+    for project in projects:
+        if project.completion_percentage == 100:
+            print(f"\t{project}")
 
 
 main()
