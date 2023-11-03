@@ -39,19 +39,6 @@ def main():
         choice = input(">>> ").upper()
 
 
-def add_project(projects):
-    print("Let's add a new project")
-    name = input("Name: ")
-    date_string = input("Date (d/m/yyyy): ")
-    start_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-    priority = int(input("Priority: "))
-    cost_estimate = float(input("Cost estimate: "))
-    completion_percentage = int(input("Percent complete: "))
-    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
-    projects.append(project)
-    return projects
-
-
 def load_projects():
     filename = input("Filename: ")
     in_file = open(filename, "r")
@@ -97,6 +84,18 @@ def update_project(projects):
     new_priority = int(input("New Priority: "))
     projects[project_choice].completion_percentage = new_percentage
     projects[project_choice].priority = new_priority
+    return projects
+
+
+def add_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    date_string = input("Date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+    project = Project(name, date_string, priority, cost_estimate, completion_percentage)
+    projects.append(project)
     return projects
 
 
