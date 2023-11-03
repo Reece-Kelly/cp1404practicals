@@ -35,14 +35,7 @@ def main():
             print("Invalid choice.")
         print(MENU)
         choice = input(">>> ").upper()
-
-
-def filter_projects_by_date(projects):
-    user_date_string = input("Show projects that start after date (dd/mm/yy): ")
-    user_date = datetime.datetime.strptime(user_date_string, "%d/%m/%Y").date()
-    for project in projects:
-        if project.is_greater_than_date(user_date):
-            print(project)
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects():
@@ -81,16 +74,12 @@ def display_projects(projects):
             print(f"\t{project}")
 
 
-def update_project(projects):
-    for i, project in enumerate(projects):
-        print(f"{i} {project}")
-    project_choice = int(input("Project choice: "))
-    print(projects[project_choice])
-    new_percentage = int(input("New Percentage: "))
-    new_priority = int(input("New Priority: "))
-    projects[project_choice].completion_percentage = new_percentage
-    projects[project_choice].priority = new_priority
-    return projects
+def filter_projects_by_date(projects):
+    user_date_string = input("Show projects that start after date (dd/mm/yy): ")
+    user_date = datetime.datetime.strptime(user_date_string, "%d/%m/%Y").date()
+    for project in projects:
+        if project.is_greater_than_date(user_date):
+            print(project)
 
 
 def add_project(projects):
@@ -102,6 +91,18 @@ def add_project(projects):
     completion_percentage = int(input("Percent complete: "))
     project = Project(name, date_string, priority, cost_estimate, completion_percentage)
     projects.append(project)
+    return projects
+
+
+def update_project(projects):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    project_choice = int(input("Project choice: "))
+    print(projects[project_choice])
+    new_percentage = int(input("New Percentage: "))
+    new_priority = int(input("New Priority: "))
+    projects[project_choice].completion_percentage = new_percentage
+    projects[project_choice].priority = new_priority
     return projects
 
 
