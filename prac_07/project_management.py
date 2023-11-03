@@ -2,6 +2,8 @@
 Estimate time to complete: 2 hours
 Actual time to complete:
 """
+from project import Project
+
 MENU = ("- (L)oad projects\n"
         "- (S)ave projects\n"
         "- (D)isplay projects\n"
@@ -16,7 +18,7 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            print("L")
+            projects = load_projects()
         elif choice == "S":
             print("S")
         elif choice == "D":
@@ -30,6 +32,20 @@ def main():
         else:
             print("Invalid choice.")
         choice = input(">>> ").upper()
+
+
+def load_projects():
+    filename = input("Filename: ")
+    in_file = open(f"{filename}", "r")
+    projects = []
+    in_file.readline()
+    for line in in_file:
+        project_details = line.strip().split("\t")
+        project = Project(project_details[0], project_details[1], project_details[2], project_details[3],
+                          project_details[4])
+        projects.append(project)
+    in_file.close()
+    return projects
 
 
 main()
