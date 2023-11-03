@@ -26,9 +26,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            date = ("Show projects that start after date (dd/mm/yy): ")
-            for project in projects:
-                pass
+            filter_projects_by_date(projects)
         elif choice == "A":
             projects = add_project(projects)
         elif choice == "U":
@@ -37,6 +35,14 @@ def main():
             print("Invalid choice.")
         print(MENU)
         choice = input(">>> ").upper()
+
+
+def filter_projects_by_date(projects):
+    user_date_string = input("Show projects that start after date (dd/mm/yy): ")
+    user_date = datetime.datetime.strptime(user_date_string, "%d/%m/%Y").date()
+    for project in projects:
+        if project.is_greater_than_date(user_date):
+            print(project)
 
 
 def load_projects():
