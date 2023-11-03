@@ -3,6 +3,7 @@ Estimate time to complete: 2 hours
 Actual time to complete:
 """
 from project import Project
+import datetime
 
 MENU = ("- (L)oad projects\n"
         "- (S)ave projects\n"
@@ -25,15 +26,30 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            print("F")
+            date = ("Show projects that start after date (dd/mm/yy): ")
+            for project in projects:
+                pass
         elif choice == "A":
-            print("A")
+            projects = add_project(projects)
         elif choice == "U":
             projects = update_project(projects)
         else:
             print("Invalid choice.")
         print(MENU)
         choice = input(">>> ").upper()
+
+
+def add_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    date_string = input("Date (d/m/yyyy): ")
+    start_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion_percentage = int(input("Percent complete: "))
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
+    return projects
 
 
 def load_projects():
