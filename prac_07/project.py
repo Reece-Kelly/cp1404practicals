@@ -11,3 +11,6 @@ class Project:
 
     def __str__(self):
         return f"{self.name}, start: {self.start_date.strftime('%d/%m/%Y')}, priority {self.priority}, estimate: ${self.cost_estimate}, completion: {self.completion_percentage}%"
+
+    def is_greater_than_date(self, user_date):
+        return self.start_date >= user_date
