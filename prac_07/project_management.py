@@ -66,8 +66,8 @@ def save_projects(projects, filename):
 
 
 def display_projects(projects):
-    incomplete_projects = [project for project in projects if project.completion_percentage != 100]
-    complete_projects = [project for project in projects if project.completion_percentage == 100]
+    incomplete_projects = sorted([project for project in projects if project.completion_percentage != 100])
+    complete_projects = sorted([project for project in projects if project.completion_percentage == 100])
     print("Incomplete projects:")
     for project in incomplete_projects:
         print(f"\t{project}")
@@ -79,9 +79,9 @@ def display_projects(projects):
 def filter_projects_by_date(projects):
     user_date_string = input("Show projects that start after date (dd/mm/yy): ")
     user_date = datetime.datetime.strptime(user_date_string, "%d/%m/%Y").date()
-    for project in projects:
-        if project.is_greater_than_date(user_date):
-            print(project)
+    past_user_date_projects = sorted([project for project in projects if project.is_greater_than_date(user_date)])
+    for project in past_user_date_projects:
+        print(project)
 
 
 def add_project(projects):
@@ -101,10 +101,12 @@ def update_project(projects):
         print(f"{i} {project}")
     project_choice = int(input("Project choice: "))
     print(projects[project_choice])
-    new_percentage = int(input("New Percentage: "))
-    new_priority = int(input("New Priority: "))
-    projects[project_choice].completion_percentage = new_percentage
-    projects[project_choice].priority = new_priority
+    new_percentage = input("New Percentage: ")
+    if new_percentage != "":
+        projects[project_choice].completion_percentage = int(new_percentage)
+    new_priority = input("New Priority: ")
+    if new_priority != "":
+        projects[project_choice].priority = int(new_priority)
     return projects
 
 
