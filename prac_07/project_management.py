@@ -12,15 +12,17 @@ MENU = ("- (L)oad projects\n"
         "- (A)dd new project\n"
         "- (U)pdate project\n"
         "- (Q)uit")
+FILENAME = "projects.txt"
 
 
 def main():
+    projects = load_projects(FILENAME)
     print(MENU)
     choice = input(">>> ").upper()
-    projects = []
     while choice != "Q":
         if choice == "L":
-            projects = load_projects()
+            filename = input("Filename: ")
+            projects = load_projects(filename)
         elif choice == "S":
             save_projects(projects)
         elif choice == "D":
@@ -38,8 +40,7 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def load_projects():
-    filename = input("Filename: ")
+def load_projects(filename):
     in_file = open(filename, "r")
     projects = []
     in_file.readline()
@@ -64,14 +65,14 @@ def save_projects(projects):
 
 
 def display_projects(projects):
+    incomplete_projects = [project for project in projects if project.completion_percentage != 100]
+    complete_projects = [project for project in projects if project.completion_percentage == 100]
     print("Incomplete projects:")
-    for project in projects:
-        if project.completion_percentage != 100:
-            print(f"\t{project}")
+    for project in incomplete_projects:
+        print(f"\t{project}")
     print("Completed projects:")
-    for project in projects:
-        if project.completion_percentage == 100:
-            print(f"\t{project}")
+    for project in complete_projects:
+        print(f"\t{project}")
 
 
 def filter_projects_by_date(projects):
