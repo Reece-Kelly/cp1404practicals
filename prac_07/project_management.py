@@ -61,7 +61,7 @@ def save_projects(projects, filename):
     out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage\n")
     for project in projects:
         out_file.write(
-            f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+            f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
     out_file.close()
 
 
