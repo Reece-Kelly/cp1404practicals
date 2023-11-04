@@ -1,6 +1,6 @@
 """
 Estimate time to complete: 2 hours
-Actual time to complete:
+Actual time to complete: 4 hours and 35 minutes
 """
 from project import Project
 import datetime
@@ -16,6 +16,7 @@ FILENAME = "projects.txt"
 
 
 def main():
+    """Load, display, add to, update, and save a list of projects."""
     projects = load_projects(FILENAME)
     print(MENU)
     choice = input(">>> ").upper()
@@ -43,6 +44,7 @@ def main():
 
 
 def load_projects(filename):
+    """Load projects from a file and return a list of project objects."""
     try:
         in_file = open(filename, "r")
         projects = []
@@ -61,6 +63,7 @@ def load_projects(filename):
 
 
 def save_projects(projects, filename):
+    """Save a list of project objects to a file."""
     try:
         out_file = open(filename, "w")
         out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage\n")
@@ -73,6 +76,7 @@ def save_projects(projects, filename):
 
 
 def display_projects(projects):
+    """Display a list of projects in sections of incomplete projects and complete projects."""
     incomplete_projects = sorted([project for project in projects if project.completion_percentage != 100])
     complete_projects = sorted([project for project in projects if project.completion_percentage == 100])
     print("Incomplete projects:")
@@ -84,10 +88,11 @@ def display_projects(projects):
 
 
 def filter_projects_by_date(projects):
+    """Filter and display projects that start after a user specified date."""
     try:
         user_date_string = input("Show projects that start after date (dd/mm/yy): ")
         user_date = datetime.datetime.strptime(user_date_string, "%d/%m/%Y").date()
-        past_user_date_projects = sorted([project for project in projects if project.is_greater_than_date(user_date)])
+        past_user_date_projects = sorted([project for project in projects if project.start_date > user_date])
         for project in past_user_date_projects:
             print(project)
     except ValueError:
@@ -95,6 +100,7 @@ def filter_projects_by_date(projects):
 
 
 def add_project(projects):
+    """Add a new project object to projects list."""
     try:
         print("Let's add a new project")
         name = input("Name: ")
@@ -111,6 +117,7 @@ def add_project(projects):
 
 
 def update_project(projects):
+    """Update the percentage and priority of a project."""
     try:
         for i, project in enumerate(projects):
             print(f"{i} {project}")
