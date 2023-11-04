@@ -24,7 +24,8 @@ def main():
             filename = input("Filename: ")
             projects = load_projects(filename)
         elif choice == "S":
-            save_projects(projects)
+            filename = input("Filename: ")
+            save_projects(projects, filename)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -37,6 +38,7 @@ def main():
             print("Invalid choice.")
         print(MENU)
         choice = input(">>> ").upper()
+    save_projects(projects, FILENAME)
     print("Thank you for using custom-built project management software.")
 
 
@@ -54,8 +56,7 @@ def load_projects(filename):
     return projects
 
 
-def save_projects(projects):
-    filename = input("Filename: ")
+def save_projects(projects, filename):
     out_file = open(filename, "w")
     out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage\n")
     for project in projects:
