@@ -14,6 +14,3 @@ class Project:
 
     def __lt__(self, other):
         return self.priority < other.priority
-
-    def is_greater_than_date(self, user_date):
-        return self.start_date >= user_date
