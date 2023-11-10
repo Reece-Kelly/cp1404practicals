@@ -9,6 +9,7 @@ BoxLayout:
             orientation: 'vertical'
             Button:
                 text: 'Up'
+                on_press: app.handle_increment(self.text, 1)
             Button:
                 text: 'Down'
     Button:
