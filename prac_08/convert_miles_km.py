@@ -15,15 +15,17 @@ class MilesToKilometresApp(App):
         return self.root
 
     def handle_calculate(self, text):
-        # miles = <<< HANDLE THIS ERROR CHECKING LATER
+        print("calculate")
         miles = self.convert_string_to_float(text)
         self.update_label(miles)
 
     def handle_increment(self, text, change):
+        print("increment")
         miles = self.convert_string_to_float(text) + change
         self.root.ids.input_number.text = str(miles)
 
     def update_label(self, miles):
+        print("update label")
         kilometres = str(miles * 1.60934)
         self.root.ids.output_label.text = kilometres
 
