@@ -19,6 +19,10 @@ class MilesToKilometresApp(App):
         miles = self.convert_string_to_float(text)
         self.update_label(miles)
 
+    def handle_increment(self, text, change):
+        miles = self.convert_string_to_float(text) + change
+        self.root.ids.input_number.text = str(miles)
+
     def update_label(self, miles):
         kilometres = str(miles * 1.60934)
         self.root.ids.output_label.text = kilometres
