@@ -4,7 +4,6 @@ BoxLayout:
         orientation: 'horizontal'
         TextInput:
             id: input_number
-            on_text: app.handle_calculate(self.text)
         BoxLayout:
             orientation: 'vertical'
             Button:
@@ -14,6 +13,7 @@ BoxLayout:
                 text: 'Down'
     Button:
         text: 'Convert miles to km'
+        on_press: app.handle_calculate(input_number.text)
     Label:
         id: output_label
         text: ''
