@@ -3,9 +3,10 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.properties import StringProperty
 
+MILES_TO_KILOMETRES_FACTOR = 1.60934
+
 
 class MilesToKilometresApp(App):
-
     output_km = StringProperty
 
     def build(self):
@@ -26,7 +27,7 @@ class MilesToKilometresApp(App):
 
     def update_label(self, miles):
         print("update label")
-        kilometres = str(miles * 1.60934)
+        kilometres = str(miles * MILES_TO_KILOMETRES_FACTOR)
         self.root.ids.output_label.text = kilometres
 
     @staticmethod
