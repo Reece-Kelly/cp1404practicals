@@ -9,3 +9,7 @@ class SilverServiceTaxi(Taxi):
         self.current_fare_distance = 0
         self.fanciness = fanciness
 
+    def get_fare(self):
+        return (self.price_per_km * self.fanciness) * self.current_fare_distance + self.flagfall
+
+
