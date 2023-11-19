@@ -5,6 +5,7 @@ MENU = "q)uit, c)hoose taxi, d)rive"
 
 
 def main():
+    """Taxi simulator program that allows the user to choose and drive taxis before displaying their total bill."""
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     total_bill = 0
     chosen_taxi = None
@@ -40,6 +41,7 @@ def main():
 
 
 def display_taxis(taxis):
+    """Display each taxi in a list of taxi with a number for each object."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
