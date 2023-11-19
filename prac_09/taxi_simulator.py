@@ -8,7 +8,7 @@ MENU = "q)uit, c)hoose taxi, d)rive"
 def main():
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     total_bill = 0
-    chosen_taxi = ""
+    chosen_taxi = None
     print("Lets drive!")
     print(MENU)
     user_choice = input(">>> ").lower()
