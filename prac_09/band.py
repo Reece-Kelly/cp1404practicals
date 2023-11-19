@@ -4,7 +4,8 @@ class Band:
         self.musicians = []
 
     def __str__(self):
-        return f"{self.name} {[str(musician) for musician in self.musicians]}"
+        musician_strings = [str(musician) for musician in self.musicians]
+        return f"{self.name} ({', '.join(musician_strings)})"
 
     def add(self, musician):
         self.musicians.append(musician)
