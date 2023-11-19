@@ -8,6 +8,7 @@ MENU = "q)uit, c)hoose taxi, d)rive"
 def main():
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     total_bill = 0
+    chosen_taxi = ""
     print("Lets drive!")
     print(MENU)
     user_choice = input(">>> ").lower()
@@ -17,7 +18,10 @@ def main():
             for i, taxi in enumerate(taxis):
                 print(f"{i} - {taxi}")
             taxi_choice = int(input("Choose taxi: "))
-            chosen_taxi = taxis[taxi_choice]
+            try:
+                chosen_taxi = taxis[taxi_choice]
+            except IndexError:
+                print("Invalid taxi choice")
         elif user_choice == "d":
             if chosen_taxi:
                 chosen_taxi.start_fare()
@@ -32,6 +36,9 @@ def main():
         print(f"Bill to date: ${total_bill}")
         print(MENU)
         user_choice = input(">>> ").lower()
-
+    print(f"Total trip cost: ${total_bill}")
+    print("Taxis are now:")
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
 
 main()
